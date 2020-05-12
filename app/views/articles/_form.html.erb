@@ -1,16 +1,21 @@
-
+<%= render 'shared/errors' %>
 <%= form_with(model: @article, local:true) do |f| %>
-    <p>
-        <%= f.label :title %><br/>
-        <%= f.text_field :title %>
-    </p>
+  <div class="form-group row mb-0">
+    <%= f.label :title, class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= f.text_field :title, class: "form-control shadow", placeholder: "Title of article" %>
+    </div>
+  </div>  
+  <div class="form-group row pt-1">
+    <div class ="col-12 col-form-label pb-0">
+      <%= f.label :description %>
+    </div>
+    <div class="col-12 pt-0">
+      <%= f.text_area :description, rows: 8, class: "form-control shadow", placeholder: "Please enter a description" %>
+    </div>
+  </div> 
+  <div class="form-group row justify-content-md-center">
+      <%= f.submit class:"btn btn-outline-success mt-2" %>
+  </div>
     
-    <p>
-        <%= f.label :description %><br/>
-        <%= f.text_area :description %>
-    </p>
-
-    <p>
-        <%= f.submit %>
-    </p>
 <% end %>

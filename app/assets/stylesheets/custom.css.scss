@@ -1,0 +1,30 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.jumbotron {
+  background-color: #EEEEEE !important;
+  padding-top: 32px !important;
+}
+
+#homecont {
+  margin-top: 150px;
+}
+
+#apptitle {
+  text-align: center !important;
+}
+
+body {
+  background-color: #000000 !important;
+  background-image: asset-url('sketchpad.jpg');
+  background-position: center top;
+  background-repeat: no-repeat;
+  
+}
+
+.display-4 {
+  color: #222222 !important;
+}
+
+.card-header {
+  font-size: 12px !important;
+}

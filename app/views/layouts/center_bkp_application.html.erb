@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AlphaBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <div class="container" id="homecont">
+        <h1 class="display-4" style="text-align:center;">Alpha Blog</h1>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+                <div class="btn-group btn-group-sm btn-block">
+                    <a class="btn btn-primary" href="#" role="button">New</a>
+                    <a class="btn btn-primary" href="#" role="button">All</a>
+                </div>
+                <div class="jumbotron">
+                    <h4>Article 1</h4>
+                    <p>This is the content of the first article</p>
+                    <h4>Article 2</h4>
+                    <p>This is the content of the second article</p>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>        
+        </div>
+    </div>
+    <%= render 'layouts/messages' %>
+    <%= yield %>
+  </body>
+</html>

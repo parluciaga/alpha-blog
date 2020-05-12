@@ -1,8 +1,17 @@
-<h1>Showing article details</h1>
+<h2><%=@article.title%></h2>
 
-<p><strong>Title: </strong><%= @article.title %></p>
-<p><strong>Description: </strong><%= @article.description %></p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> | 
-<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure?"} %>
-<%= link_to 'Return to articles listing', articles_path %>
+<div class="card mt-2 shadow mb-4 bg-white rounded">
+          <div class="card-header font-italic text-center p-1">
+            By Patricio Arluciaga
+          </div>
+          <div class="card-body p-3">
+            <div class="card-text"><%= simple_format(@article.description) %></div>
+            <div class="row justify-content-md-center">
+              <%= link_to "Edit", edit_article_path(@article), class:"btn btn-outline-info m-1", role:"button" %> 
+              <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-outline-danger m-1", role:"button" %> 
+            </div>
+          </div>
+          <div class="card-footer text-muted p-1">
+            <small>Created <%= time_ago_in_words(@article.created_at) %> ago, edited <%= time_ago_in_words(@article.updated_at)%> ago</small>
+          </div>
+        </div>
