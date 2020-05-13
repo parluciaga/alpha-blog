@@ -1,7 +1,9 @@
 class PagesController < ApplicationController
     def home
         articles = Article.all
-        @recent = articles[-3..-1].reverse
+        if articles
+            @recent = articles[-3..-1].reverse
+        end
     end
     
     def about
