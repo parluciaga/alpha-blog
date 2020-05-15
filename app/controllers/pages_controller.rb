@@ -1,9 +1,6 @@
 class PagesController < ApplicationController
     def home
-        articles = Article.all
-        if articles
-            @recent = articles[-3..-1].reverse
-        end
+        @recent = Article.recent.limit(3) || []
     end
     
     def about
