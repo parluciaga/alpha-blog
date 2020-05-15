@@ -1,13 +1,5 @@
 <h1 class="text-center">Recently Modified Articles</h1>
-  <% @recent.each do |article| %>
-    <div class="card bg-white rounded">
-        <div class="card-body p-2">
-          <h5 class="card-title mb-2"><%= link_to article.title, article_path(article), class: "text-success" %> 
-            <small class="text-muted"><%= article.user.username %></small></h5>
-          <p class="card-text"><%= truncate(article.description, length: 100) %></p>
-        </div>
-    </div>
-  <% end %>
+  <%= render 'articles/articles_compact', obj:@recent%>
   <div class="row mt-3">
     <div class="col text-center"><%= link_to "Sign up!", signup_path, class:"btn, btn-success btn-lg" %></div>
   </div>

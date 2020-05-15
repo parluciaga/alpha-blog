@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-start align-items-center mb-3">
+  <div class="p-2">
+    <%= gravatar_for @user, size:100 %>
+  </div>
+  <div class="p-2">
+    <h1><%= @user.username %>'s profile</h1>
+  </div>
+  
+</div>
+
+
+
+<h4 class="text-center">Articles</h4>
+
+<%= render 'articles/articles_compact', obj:@user.articles %>
