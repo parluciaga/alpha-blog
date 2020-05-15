@@ -1,19 +1,13 @@
-<h1 class="text-center">Recent Articles</h1>
+<h1 class="text-center">Recently Modified Articles</h1>
   <% @recent.each do |article| %>
-    <div class="card mt-2 shadow mb-4 bg-white rounded">
-      <div class="card-header font-italic text-center p-1">
-        By Patricio Arluciaga
-      </div>
-      <div class="card-body p-3">
-        <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
-        <p class="card-text"><%= truncate(article.description, length: 100) %></p>
-        <div class="row justify-content-md-center">
-          <%= link_to "View", article_path(article), class:"btn btn-outline-success m-1", role:"button" %> 
+    <div class="card bg-white rounded">
+        <div class="card-body p-2">
+          <h5 class="card-title mb-2"><%= link_to article.title, article_path(article), class: "text-success" %> 
+            <small class="text-muted"><%= article.user.username %></small></h5>
+          <p class="card-text"><%= truncate(article.description, length: 100) %></p>
         </div>
-      </div>
-      <div class="card-footer text-muted p-1">
-        <small>Created <%= time_ago_in_words(article.created_at) %> ago, edited <%= time_ago_in_words(article.updated_at)%> ago</small>
-      </div>
     </div>
   <% end %>
-<%= link_to 'About page', about_path %>
+  <div class="row mt-3">
+    <div class="col text-center"><%= link_to "Sign up!", signup_path, class:"btn, btn-success btn-lg" %></div>
+  </div>
