@@ -1,8 +1,9 @@
 <h2><%=@article.title%></h2>
 
 <div class="card mt-2 shadow mb-4 bg-white rounded">
-          <div class="card-header font-italic text-center p-1">
-            By <%= article.user.username if article.user %>
+          <div class="card-header font-italic p-1 text-center">
+            By <%= @article.user.username if @article.user %>
+            <%= link_to gravatar_for(@article.user, size:50), user_path(@article.user), class:"text-right" %>
           </div>
           <div class="card-body p-3">
             <div class="card-text"><%= simple_format(@article.description) %></div>
