@@ -16,8 +16,10 @@
             <p class="card-text small"><%= truncate(article.description, length: 100) %></p>
             <div class="row justify-content-md-center">
               <%= link_to "View", article_path(article), class:"btn btn-outline-success m-1 btn-sm", role:"button" %> 
-              <%= link_to "Edit", edit_article_path(article), class:"btn btn-outline-info m-1 btn-sm", role:"button" %> 
-              <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-outline-danger m-1 btn-sm", role:"button" %> 
+              <% if logged_in? && article.user == current_user %>
+                <%= link_to "Edit", edit_article_path(article), class:"btn btn-outline-info m-1 btn-sm", role:"button" %> 
+                <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-outline-danger m-1 btn-sm", role:"button" %> 
+              <% end %>
             </div>
           </div>
           <div class="card-footer text-muted p-1">

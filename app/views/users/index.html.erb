@@ -12,7 +12,9 @@
         <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
         <div class="row justify-content-md-center">
           <%= link_to "View profile", user, class:"btn btn-outline-success m-1", role:"button" %> 
-          <%= link_to "Edit profile", edit_user_path(user), class:"btn btn-outline-info m-1", role:"button" %> 
+          <% if logged_in? && user == current_user %>
+            <%= link_to "Edit profile", edit_user_path(user), class:"btn btn-outline-info m-1", role:"button" %> 
+          <% end %>
         </div>
       </div>
       <div class="card-footer text-muted p-1">

@@ -2,12 +2,49 @@
     <div class="col">
     </div>
     <div class="col-8 p-0">
-        <h1 class="display-4" id="apptitle"><%= link_to "Alpha Blog", root_path %></h1>
-        <div class="btn-group btn-group-sm btn-block">
-            <%= link_to "New", new_article_path, class:"btn btn-primary", role:"button" %> 
-            <%= link_to "All", articles_path, class:"btn btn-primary", role:"button" %>
-            <%= link_to "Users", users_path, class:"btn btn-primary font-weight-light", role:"button" %>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-6">
+                <div class="h1 display-4 text-center pt-6" ><%= link_to "Alpha Blog", root_path %></div>
+            </div>
+            <div class="col align-self-end">
+                <% if logged_in? %>
+                    <p class="text-right font-italic mb-3"><%= current_user.username%></p>
+                <% else %>
+                    <p class="text-right font-italic mb-3 text-success"º><%= link_to 'Sign up', signup_path %></p>
+                <% end %>
+            </div>
+      
         </div>
+        
+          <ul class="nav nav-pills nav-fill">
+            <li class="nav-item ">
+              <% if logged_in? %>
+                  <%= link_to "New", new_article_path, class:"nav-link active w-40" %> 
+              <% else %>
+                  <%= link_to "New", "#", class:"nav-item disabled w-40" %>
+              <% end %>
+            </li>
+            <li class="nav-item w-40">
+              <%= link_to "All", articles_path, class:"nav-link active w-40" %>
+            </li>
+            <li class="nav-item dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle w-100 p-2" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                  User
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                  <% if logged_in? %>
+                    <%= link_to 'Log out', logout_path, class: "dropdown-item", method: :delete %>
+                  <% else %>
+                    <%= link_to 'Log in', login_path, class: "dropdown-item" %>
+                  <% end %>
+                  <%= link_to "Bloggers", users_path, class: "dropdown-item"%>
+                </div>
+            </li>
+              
+          </ul>
+
     </div>
     <div class="col">
     </div>
