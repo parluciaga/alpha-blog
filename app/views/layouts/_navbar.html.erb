@@ -35,6 +35,9 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                   <% if logged_in? %>
+                    <%= link_to 'View your profile', user_path(current_user), class: "dropdown-item" %>
+                    <%= link_to 'Edit your profile', edit_user_path(current_user), class: "dropdown-item" %>
+                    <%= link_to 'Delete your profile', user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure?" } %>
                     <%= link_to 'Log out', logout_path, class: "dropdown-item", method: :delete %>
                   <% else %>
                     <%= link_to 'Log in', login_path, class: "dropdown-item" %>
