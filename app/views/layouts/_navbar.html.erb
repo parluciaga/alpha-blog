@@ -1,54 +1,54 @@
 <div class="row">
-    <div class="col">
-    </div>
-    <div class="col-8 p-0">
-        <div class="row">
-            <div class="col">
-            </div>
-            <div class="col-6">
-                <div class="h1 display-4 text-center pt-6" ><%= link_to "Alpha Blog", root_path %></div>
-            </div>
-            <div class="col align-self-end">
-                <% if logged_in? %>
-                    <p class="text-right font-italic mb-3"><%= current_user.username%></p>
-                <% else %>
-                    <p class="text-right font-italic mb-3 text-success"º><%= link_to 'Sign up', signup_path %></p>
-                <% end %>
-            </div>
-      
+  <div class="col">
+  </div>
+  <div class="col-8 p-0">
+    <div class="row">
+        <div class="col">
         </div>
+        <div class="col-5 px-0">
+            <div class="h1 display-4 text-center pt-6" >
+              <%= link_to "Alpha Blog", root_path %>
+            </div>
+        </div>
+        <div class="col align-self-end pl-0">
+            <% if logged_in? %>
+                <p class="text-right font-italic mb-3"><%= "(Admin) " if current_user.admin? %><%= current_user.username%></p>
+            <% else %>
+                <p class="text-right font-italic mb-3 text-success"º><%= link_to 'Sign up', signup_path %></p>
+            <% end %>
+        </div>
+    </div>
+    <nav class="navbar nav-justified navbar-dark bg-primary flex-sm-row">
+      <%= link_to "All Articles", articles_path, class:"text-light flex-sm-fill text-sm-center nav-link" %>
+      <% if logged_in? %>
+        <%= link_to "New Article", new_article_path, class:"text-light flex-sm-fill text-sm-center nav-link" %> 
+      <% else %>
+        <%= link_to "New", "#", class:"text-black-50 flex-sm-fill text-sm-center nav-link" %>
+      <% end %>
         
-          <ul class="nav nav-pills nav-fill">
-            <li class="nav-item ">
-              <% if logged_in? %>
-                  <%= link_to "New", new_article_path, class:"nav-link active w-40" %> 
-              <% else %>
-                  <%= link_to "New", "#", class:"nav-item disabled w-40" %>
-              <% end %>
-            </li>
-            <li class="nav-item w-40">
-              <%= link_to "All", articles_path, class:"nav-link active w-40" %>
-            </li>
-            <li class="nav-item dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle w-100 p-2" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-                  User
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                  <% if logged_in? %>
-                    <%= link_to 'View your profile', user_path(current_user), class: "dropdown-item" %>
-                    <%= link_to 'Edit your profile', edit_user_path(current_user), class: "dropdown-item" %>
-                    <%= link_to 'Delete your profile', user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure?" } %>
-                    <%= link_to 'Log out', logout_path, class: "dropdown-item", method: :delete %>
-                  <% else %>
-                    <%= link_to 'Log in', login_path, class: "dropdown-item" %>
-                  <% end %>
-                  <%= link_to "Bloggers", users_path, class: "dropdown-item"%>
-                </div>
-            </li>
-              
-          </ul>
-
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarUsers" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+              <i class="fas fa-users fa-lg"></i>
+            </span>
+          </button>
+    </nav>
+        
+    <div class="collapse text-right" id="navbarUsers">
+      <div class="bg-primary p-4">
+        <% if logged_in? %>
+          <%= link_to 'View your profile', user_path(current_user), class: "dropdown-item" %>
+          <%= link_to 'Edit your profile', edit_user_path(current_user), class: "dropdown-item" %>
+          <%= link_to 'Delete your profile', user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+        <div class="dropdown-divider"></div>
+          <%= link_to 'Log out', logout_path, class: "dropdown-item", method: :delete %>
+        <% else %>
+          <%= link_to 'Log in', login_path, class: "dropdown-item" %>
+        <% end %>
+        <div class="dropdown-divider"></div>
+          <%= link_to "Bloggers", users_path, class: "dropdown-item"%>
+      </div>
     </div>
-    <div class="col">
-    </div>
+  </div>
+  <div class="col">
+  </div>
 </div>

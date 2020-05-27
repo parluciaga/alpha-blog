@@ -21,6 +21,14 @@ body {
   color: #222222 !important;
 }
 
+
+.dropdown-item {
+  color: #fff !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #222 !important;
+}
 .card-header {
   font-size: 12px !important;
 }
@@ -55,3 +63,8 @@ body {
     margin-right: 1em; }
   .flickr_pagination .next_page {
     margin-left: 1em; }
+    
+.navbar-toggler-icon {
+  background-image: none !important;
+}
+
