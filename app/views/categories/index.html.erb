@@ -1,0 +1,18 @@
+<h1 class="text-center mb-3">Categories</h1>
+      <div class="row justify-content-center mb-3">
+         <div class="flickr_pagination">
+           <%= will_paginate @categories %>
+         </div>
+      </div>
+    <div class="row row-cols-4 row-cols-md-3">
+      <% @categories.each do |category| %>
+       <div class="col mb-4">
+          <div class="card mt-1 shadow mb-2 bg-secondary rounded">
+            <div class="card-body p-2">
+              <h5 class="card-title mb-0 text-center"><%= link_to category.name, category_path(category), class: "text-light" %></h5>
+            </div>
+            
+          </div>
+        </div>
+      <% end %>
+    </div>

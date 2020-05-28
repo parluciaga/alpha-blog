@@ -25,7 +25,11 @@
       <% else %>
         <%= link_to "New", "#", class:"text-black-50 flex-sm-fill text-sm-center nav-link" %>
       <% end %>
-        
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCategories" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+              <i class="fas fa-tags fa-lg"></i>
+            </span>
+          </button>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarUsers" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
               <i class="fas fa-users fa-lg"></i>
@@ -46,6 +50,15 @@
         <% end %>
         <div class="dropdown-divider"></div>
           <%= link_to "Bloggers", users_path, class: "dropdown-item"%>
+      </div>
+    </div>
+    <div class="collapse text-right" id="navbarCategories">
+      <div class="bg-primary p-4">
+        <%= link_to 'Categories', categories_path, class: "dropdown-item" %>
+        <% if logged_in? && current_user.admin? %>
+          <div class="dropdown-divider"></div>
+          <%= link_to 'Create New Category', new_category_path, class: "dropdown-item" %>
+        <% end %>
       </div>
     </div>
   </div>
