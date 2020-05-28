@@ -3,7 +3,11 @@
         <div class="card-body p-2">
           <h5 class="card-title mb-2"><%= link_to article.title, article_path(article), class: "text-success" %> 
             <small class="text-muted"><%= article.user.username %></small></h5>
-          <p class="card-text"><%= truncate(article.description, length: 100) %></p>
+          <p class="card-text mb-1"><%= truncate(article.description, length: 100) %></p>
+        
+        <% if article.categories.any? %>
+              <p class="text-small my-0">Categories: <%= render article.categories %></p>
+        <% end %>
         </div>
     </div>
 <% end %>

@@ -1,7 +1,32 @@
-<div class="d-flex justify-content-start align-items-center mb-1">
-  <div class="p-2">
-    <h1><%= @category.name %> category</h1>
+<h1><em><%= @category.name %></em> category</h1>
+  <div class="row justify-content-center">
+    <div class="flickr_pagination">
+      <%= will_paginate @category_articles %>
+    </div>
   </div>
-  
-</div>
+  <% @category_articles.each do |carticle| %>
+    <div class="card mt-1 shadow mb-2 bg-white rounded">
+      <div class="card-header font-italic text-center p-1">
+        <% if carticle.user %>
+          By <%= link_to carticle.user.username, user_path(carticle.user) %>
+        <% end %>
+      </div>
+      <div class="card-body p-2">
+        <h5 class="card-title"><%= link_to carticle.title, article_path(carticle), class: "text-success" %></h5>
+        <p class="card-text small"><%= truncate(carticle.description, length: 100) %></p>
+        
+        <div class="row justify-content-md-center">
+          <%= link_to "View", article_path(carticle), class:"btn btn-outline-success m-1 btn-sm", role:"button" %> 
+          <% if logged_in? && (carticle.user == current_user || current_user.admin?) %>
+            <%= link_to "Edit", edit_article_path(carticle), class:"btn btn-outline-info m-1 btn-sm", role:"button" %> 
+            <%= link_to "Delete", article_path(carticle), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-outline-danger m-1 btn-sm", role:"button" %> 
+          <% end %>
+        </div>
+      </div>
+      <div class="card-footer text-muted p-1">
+        <small>Created <%= time_ago_in_words(carticle.created_at) %> ago, edited <%= time_ago_in_words(carticle.updated_at)%> ago</small>
+      </div>
+    </div>
+  <% end %>
+
 
